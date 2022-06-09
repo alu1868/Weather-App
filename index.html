@@ -15,17 +15,18 @@
 
     <!-- TITLE -->
     <header class="bg-primary" style="height: 50px;">
-        <h1 class="text-center font-weight-bold text-decoration-underline text-white">Weather Dashboard</h1>
+        <h1 class="text-center font-weight-bold text-white"><u>Weather Dashboard</u></h1>
     </header>
     <!-- MAIN CONTENT OF PAGE -->
     <content class="row">
         <!-- SIDE BAR WITH SEARCH + RESULTS -->
         <aside class="col-3">
             <!-- SEARCH BUTTON -->
-            <form class="">
-                <h2 class="font-weight-bold">Search for a City:</h2>
-                <input type="text">
-                <button type="button" class="btn btn-info">Search</button>
+            
+            <form class="m-3 p-3" id="citySearch">
+                <h2 class="font-weight-bold"><u>Search for a City:</u></h2>
+                <input id="cityName" type="text" placeholder="Please Search a City">
+                <button type="submit" class="btn btn-info">Search</button>
             </form>
 
             <!-- SEARCH REULTS -->
@@ -36,44 +37,73 @@
         <main class="col-9">
 
             <!-- TODAY's WEATHER-->
-            <article>
-                <div>
-                    <h2 id="cityname"></h2>
-                    <p id="temperature"></p>
-                    <p id="windspeed"></p>
-                    <p id="humidity"></p>
-                    <p id="uvindex"></p>
+            <article class="">
+                <div class="bg-primary m-3 p-3 rounded">  
+                    <!-- Cityname + date -->
+                    <h2 id="cityname" class="text-white font-weight-bold">City Name + Date</h2>
+                    <p id="currentDay" class="text-white font-weight-bold"></p>
+                    <p id="temperature" class="text-white font-weight-bold">Temperature:</p>
+                    <p id="windspeed" class="text-white font-weight-bold">Windspeed:</p>
+                    <p id="humidity" class="text-white font-weight-bold">Humidity:</p>
+                    <div id="uviContainer">
+                        <p id="uvindex" class="text-white font-weight-bold">UV index:</p>
+                    </div>
                 </div>
             </article>
 
             <!-- FUTURE WEATHER -->
             <section>
-                <h3 class="font-weight-bold">5 Day Forecast</h3>
+                <h3 class="font-weight-bold underline"><u>5 Day Forecast</u></h3>
                 <div class="row">
                     <div class="col-1"></div>
                     <!-- DAY 1 -->
-                    <div class="col-2 card bg-secondary border border-primary" id="day1">
-
+                    <div class="col-2 card bg-primary border border-primary" id="day1">
+                            <h4 id="day1Date" class="font-weight-bold text-white">Day1</h4>
+                            <!-- Weather Condition Icon -->
+                            <img id="day1Icon"></img>
+                            <p id="day1Temp" class="text-white">Temp:</p>
+                            <p id="day1Wind" class="text-white">Wind:</p>
+                            <p id="day1Humidity" class="text-white">Humidity</p>
                     </div>
 
                     <!-- DAY 2 -->
-                    <div class="col-2 card bg-secondary border border-primary" id="day2">
-
+                    <div class="col-2 card bg-primary border border-primary ml-3" id="day2">
+                            <h4 id="day2Date" class="font-weight-bold text-white">Day2</h4>
+                            <!-- Weather Condition Icon -->
+                            <img id="day2Icon"></img>
+                            <p id="day2Temp" class="text-white">Temp:</p>
+                            <p id="day2Wind" class="text-white">Wind:</p>
+                            <p id="day2Humidity" class="text-white">Humidity</p>
                     </div>
 
                     <!-- DAY 3 -->
-                    <div class="col-2 card bg-secondary border border-primary" id="day3">
-
+                    <div class="col-2 card bg-primary border border-primary ml-3" id="day3">
+                            <h4 id="day3Date" class="font-weight-bold text-white">Day3</h4>
+                            <!-- Weather Condition Icon -->
+                            <img id="day3Icon"></img>
+                            <p id="day3Temp" class="text-white">Temp:</p>
+                            <p id="day3Wind" class="text-white">Wind:</p>
+                            <p id="day3Humidity" class="text-white">Humidity</p>
                     </div>
 
                     <!--DAY 4 -->
-                    <div class="col-2 card bg-secondary border border-primary" id="day4">
-
+                    <div class="col-2 card bg-primary border border-primary ml-3" id="day4">
+                            <h4 id="day4Date" class="font-weight-bold text-white">Day4</h4>
+                            <!-- Weather Condition Icon -->
+                            <img id="day4Icon"></img>
+                            <p id="day4Temp" class="text-white">Temp:</p>
+                            <p id="day4Wind" class="text-white">Wind:</p>
+                            <p id="day4Humidity" class="text-white">Humidity</p>
                     </div>
 
                     <!-- DAY 5 -->
-                    <div class="col-2 card bg-secondary border border-primary" id="day5">
-
+                    <div class="col-2 card bg-primary border border-primary ml-3" id="day5">
+                            <h4 id="day5Date" class="font-weight-bold text-white">Day5</h4>
+                            <!-- Weather Condition Icon -->
+                            <img id="day5Icon"></img>
+                            <p id="day5Temp" class="text-white">Temp:</p>
+                            <p id="day5Wind" class="text-white">Wind:</p>
+                            <p id="day5Humidity" class="text-white">Humidity</p>
                     </div>
                     <div class="col-1"></div>
                 </div>
@@ -81,6 +111,7 @@
 
         </main>
     </content>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
