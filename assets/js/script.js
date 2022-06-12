@@ -30,12 +30,29 @@ function whatsTheWeather() {
                             return response.json().then(function (data){
                                 // console.log(data)
                                 var uvLevels = data.daily[0].uvi
+                                //console.log(uvLevels)
+
+                                // check UV LEVEL TO REMOVE
+                                var uviContainerEl = document.getElementById("uviContainer")
+
+                                if (uviContainerEl.classList.contains("bg-success")) {
+                                    uviContainerEl.classList.remove("bg-success")
+                                } else if (uviContainerEl.classList.contains("bg-warning")) {
+                                    uviContainerEl.classList.remove("bg-warnging")
+                                } else if (uviContainerEl.classList.contains("bg-danger")) {
+                                    uviContainerEl.classList.remove("bg-danger")
+                                }
+
+                                // check UV LEVEL TO ASIGN
                                 if (uvLevels <= 2.9) {
                                     // console.log("uv levels are low")
-                                } else if (3 <= uvLevels || uvLevels <= 5.9) {
+                                    uviContainerEl.classList.add("bg-success")
+                                } else if (3 <= uvLevels && uvLevels <= 5.9) {
                                     // console.log("uv levels are moderate")
+                                    uviContainerEl.classList.add("bg-warning")
                                 } else {
                                     // console.log("uv levels are high")
+                                    uviContainerEl.classList.add("bg-danger")
                                 }
                                 document.getElementById("uvindex").textContent = "UV Index: " + uvLevels;
                             })
@@ -65,7 +82,8 @@ function whatsTheWeather() {
             return response.json()
                 .then(function (data) {
                     for (let i=0; i < 5; i++) {
-                        document.getElementById("day" + [i+1] + "Date").textContent = data.list[i+1].dt_txt
+                        document.getElementById("day" + [i+1] + "Date").textContent = data.list[i].dt_txt
+                        document.getElementById("day" + [i+1] + "Icon").setAttribute("src", "https://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png")
                         document.getElementById("day" + [i+1] + "Temp").textContent = "Temperature: " + data.list[i].main.temp + " °F"
                         document.getElementById("day" + [i+1] + "Wind").textContent = "Wind: " + data.list[i].wind.speed + "MPH"
                         document.getElementById("day" + [i+1] + "Humidity").textContent = "Humidity: " + data.list[i].main.humidity + "%"
