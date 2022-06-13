@@ -36,7 +36,7 @@
 
 # Technology
 * JavaScript
-* BootStrap CSS
+* BootStrap CSS (https://getbootstrap.com/)
 * HTML
 * CSS
 * https://openweathermap.org/api
