@@ -35,7 +35,16 @@
     A simple Weather dashboard where you can search a city and you are presented with its weather conditions for the next few days
 
 # Technology
+* JavaScript
+* BootStrap CSS
+* HTML
+* CSS
+* https://openweathermap.org/api
 
 # Links
+* Github: https://github.com/alu1868
+* Repo: https://github.com/alu1868/Challenge-6-Weather-Dashboard
+
 
 # Images/Assets
+![alt text](./assets/images/Capture.PNG)
