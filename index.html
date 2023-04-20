@@ -1,115 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashbaord</title>
-
-    <!-- LINK BOOTSTRAP -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Link styles.css -->
-        <link rel="stylesheet" href="./assets/css/styles.css">
-    </head>
-<body>
-
-    <!-- TITLE -->
-    <header class="bg-primary" style="height: 50px;">
-        <h1 class="text-center font-weight-bold text-white"><u>Weather Dashboard</u></h1>
-    </header>
-    <!-- MAIN CONTENT OF PAGE -->
-    <content class="row">
-        <!-- SIDE BAR WITH SEARCH + RESULTS -->
-        <aside class="col-3">
-            <!-- SEARCH BUTTON -->
-            
-            <form class="m-3 p-3 border-bottom border-dark" id="citySearch">
-                <h2 class="font-weight-bold"><u>Search for a City:</u></h2>
-                <input id="cityName" type="text" placeholder="Please Search a City">
-                <button type="submit" class="btn btn-info">Search</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌞 Weather app | by Alexander Lu</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/2324bc7f0f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="row">
+          <div class="col-9">
+            <form>
+              <input
+                type="text"
+                placeholder="Type a city"
+                autocomplete="off"
+                class="search-box"
+                id="searched-city"
+              />
+              <button type="submit" class="form-btn" id="submit-btn">
+                <i class="fas fa-search"></i>
+              </button>
+              <button type="button" class="form-btn" id="location-btn">
+                <i class="fas fa-location-arrow"></i>
+              </button>
             </form>
-
-            <!-- SEARCH REULTS -->
-            <ul id="search-history"></ul>
-            
-        </aside>
-        <!-- MAIN CONTENT WITH WEATHER RESULTS-->
-        <main class="col-9">
-
-            <!-- TODAY's WEATHER-->
-            <article class="">
-                <div class="bg-primary m-3 p-3 rounded">  
-                    <!-- Cityname + date -->
-                    <h2 id="cityname" class="text-white font-weight-bold">City Name + Date</h2>
-                    <p id="currentDay" class="text-white font-weight-bold"></p>
-                    <p id="temperature" class="text-white font-weight-bold">Temperature:</p>
-                    <p id="windspeed" class="text-white font-weight-bold">Windspeed:</p>
-                    <p id="humidity" class="text-white font-weight-bold">Humidity:</p>
-                    <div id="uviContainer" class="rounded">
-                        <p id="uvindex" class="text-white font-weight-bold">UV index:</p>
-                    </div>
-                </div>
-            </article>
-
-            <!-- FUTURE WEATHER -->
-            <section>
-                <h3 class="font-weight-bold underline m-3"><u>5 Day Forecast</u></h3>
-                <div class="row m-3">
-                    <!-- DAY 1 -->
-                    <div class="col card bg-primary border border-primary ml-3 mr-3" id="day1">
-                            <h4 id="day1Date" class="font-weight-bold text-white">Day1</h4>
-                            <!-- Weather Condition Icon -->
-                            <img id="day1Icon"></img>
-                            <p id="day1Temp" class="text-white">Temp:</p>
-                            <p id="day1Wind" class="text-white">Wind:</p>
-                            <p id="day1Humidity" class="text-white">Humidity</p>
-                    </div>
-
-                    <!-- DAY 2 -->
-                    <div class="col card bg-primary border border-primary ml-3 mr-3" id="day2">
-                            <h4 id="day2Date" class="font-weight-bold text-white">Day2</h4>
-                            <!-- Weather Condition Icon -->
-                            <img id="day2Icon"></img>
-                            <p id="day2Temp" class="text-white">Temp:</p>
-                            <p id="day2Wind" class="text-white">Wind:</p>
-                            <p id="day2Humidity" class="text-white">Humidity</p>
-                    </div>
-
-                    <!-- DAY 3 -->
-                    <div class="col card bg-primary border border-primary ml-3 mr-3" id="day3">
-                            <h4 id="day3Date" class="font-weight-bold text-white">Day3</h4>
-                            <!-- Weather Condition Icon -->
-                            <img id="day3Icon"></img>
-                            <p id="day3Temp" class="text-white">Temp:</p>
-                            <p id="day3Wind" class="text-white">Wind:</p>
-                            <p id="day3Humidity" class="text-white">Humidity</p>
-                    </div>
-
-                    <!--DAY 4 -->
-                    <div class="col card bg-primary border border-primary ml-3 mr-3" id="day4">
-                            <h4 id="day4Date" class="font-weight-bold text-white">Day4</h4>
-                            <!-- Weather Condition Icon -->
-                            <img id="day4Icon"></img>
-                            <p id="day4Temp" class="text-white">Temp:</p>
-                            <p id="day4Wind" class="text-white">Wind:</p>
-                            <p id="day4Humidity" class="text-white">Humidity</p>
-                    </div>
-
-                    <!-- DAY 5 -->
-                    <div class="col card bg-primary border border-primary ml-3 mr-3" id="day5">
-                            <h4 id="day5Date" class="font-weight-bold text-white">Day5</h4>
-                            <!-- Weather Condition Icon -->
-                            <img id="day5Icon"></img>
-                            <p id="day5Temp" class="text-white">Temp:</p>
-                            <p id="day5Wind" class="text-white">Wind:</p>
-                            <p id="day5Humidity" class="text-white">Humidity</p>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </content>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
+          </div>
+          <div class="col-3">
+            <label class="active-unit" id="celsius-label-btn">
+              <button class="celsius-btn" id="celsius">
+                ºC
+              </button>
+            </label>
+            <label class="alternative-unit" id="fahrenheit-label-btn">
+              <button class="fahrenheit-btn" id="fahrenheit">
+                ºF
+              </button>
+            </label>
+          </div>
+        </div>
+        <h1 id="city"></h1>
+        <div class="row">
+          <div class="col date-description">
+            <span id="date"></span>
+            <br />
+            <span id="weather-description"></span>
+          </div>
+          <div class="col">
+            <img
+              src="http://openweathermap.org/img/wn/10d@2x.png"
+              alt="Rain"
+              class="icon"
+              id="weather-icon"
+            />
+          </div>
+          <div class="col">
+            <h2>
+              <span class="current-temp" id="temp"></span
+              ><small class="weather-unit unit">ºC</small>
+            </h2>
+          </div>
+        </div>
+        <div class="weather-extra">
+          <ul>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>Wind: <span id="wind"></span> km/h</li>
+          </ul>
+        </div>
+        <div class="row hour-forecast" id="forecast"></div>
+      </div>
+      
+    </div>
+    <script src="src/script.js"></script>
+  </body>
 </html>
